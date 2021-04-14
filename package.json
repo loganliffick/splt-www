@@ -1,0 +1,24 @@
+{
+  "name": "spltjs-site",
+  "version": "1.0.0",
+  "description": "An easy to use text splitting javascript library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "text",
+    "splitter",
+    "animation",
+    "npm",
+    "package",
+    "loganliffick",
+    "documentation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "spltjs": "^1.0.4"
+  }
+}
