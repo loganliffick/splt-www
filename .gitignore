@@ -1,3 +1,14 @@
+# dependencies
 .cache
 dist
 node_modules
+
+# misc
+.DS_Store
+
+# prettier
+.prettierignore
+.prettierrc
+
+# production
+build

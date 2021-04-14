@@ -1,22 +1,22 @@
 {
   "name": "spltjs-site",
   "version": "1.0.0",
-  "description": "An easy to use text splitting javascript library",
+  "description": "Splt.js documentation site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "text",
-    "splitter",
-    "animation",
-    "npm",
-    "package",
-    "loganliffick",
-    "documentation"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Logan-Liffick/spltjs-site.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Logan-Liffick/spltjs-site/issues"
+  },
+  "homepage": "https://github.com/Logan-Liffick/spltjs-site#readme",
   "dependencies": {
     "animejs": "^3.2.1",
     "spltjs": "^1.0.4"
