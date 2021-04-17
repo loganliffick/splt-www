@@ -12,3 +12,7 @@ node_modules
 
 # production
 build
+
+# snowpack
+snowpack.config.js
+.snowpack/

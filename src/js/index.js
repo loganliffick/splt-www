@@ -1,5 +1,5 @@
-import splt from 'spltjs';
 import anime from 'animejs';
+import splt from 'spltjs';
 
 splt({
   reveal: true,
@@ -8,7 +8,7 @@ splt({
 anime({
   targets: '.reveal',
   translateY: [40, 0],
-  duration: 1000,
+  duration: 2000,
   loop: true,
   direction: 'alternate',
   delay: anime.stagger(25, { start: 500 }),

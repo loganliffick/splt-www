@@ -1,3 +1,3 @@
-# spltjs-site
+# splt.js docs
 
-Splt.js documentation site
+splt.js documentation site
