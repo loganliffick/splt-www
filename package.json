@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/Logan-Liffick/splt-www#readme",
   "dependencies": {
-    "snowpack": "^3.3.3"
+    "snowpack": "^3.3.4"
   }
 }

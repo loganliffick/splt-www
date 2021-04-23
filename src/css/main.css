@@ -1,3 +1,168 @@
+:root {
+  --blue-1: #000aff;
+  --blue-2: #f0eef8;
+  --pink-1: #c800b4;
+  --pink-2: #ffebfd;
+  --yellow-1: #9d6b0c;
+  --yellow-2: #fffede;
+  --green-1: #0b7e55;
+  --green-2: #dff8ef;
+  --gray-1: #000000;
+  --gray-2: #00000075;
+  --gray-3: #00000050;
+  --gray-4: #00000025;
+  --gray-5: #fafafa;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  font-family: 'Work Sans', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
 h1 {
-  font-size: 40px;
+  color: var(--gray-1);
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 500;
+}
+
+h2 {
+  color: var(--gray-1);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+}
+
+h3 {
+  color: var(--gray-1);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+h4 {
+  color: var(--gray-1);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+p {
+  color: var(--gray-1);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.opacity-75 {
+  opacity: 75%;
+}
+
+.opacity-50 {
+  opacity: 50%;
+}
+
+section {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.hero-content {
+  max-width: 734px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section.a {
+  height: 150vh;
+  background: papayawhip;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-left: 72px;
+  padding-right: 72px;
+  background: var(--white);
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  max-width: 1648px;
+}
+
+.margin-right-05 {
+  margin-right: 8px;
+}
+
+.margin-right-1 {
+  margin-right: 16px;
+}
+
+.margin-top-2 {
+  margin-top: 32px;
+}
+
+.logo-container {
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-item {
+  margin-right: 24px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-1);
+  background: none;
+}
+
+.npm {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
