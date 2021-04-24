@@ -1,6 +1,6 @@
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #000000;
+  color: var(--black);
   background: none;
   font-family: 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
     monospace;
@@ -28,7 +28,7 @@ pre[class*='language-'] ::-moz-selection,
 code[class*='language-']::-moz-selection,
 code[class*='language-'] ::-moz-selection {
   text-shadow: none;
-  background: #d3c9fa;
+  background: var(--blue-highlight);
 }
 
 pre[class*='language-']::selection,
@@ -36,7 +36,7 @@ pre[class*='language-'] ::selection,
 code[class*='language-']::selection,
 code[class*='language-'] ::selection {
   text-shadow: none;
-  background: #d3c9fa;
+  background: var(--blue-highlight);
 }
 
 @media print {
@@ -55,7 +55,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: #f0eef8;
+  background: var(--blue-2);
 }
 
 /* Inline code */
@@ -69,11 +69,11 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #00000050;
+  color: var(--gray-3);
 }
 
 .token.punctuation {
-  color: #00000095;
+  color: var(--gray-1);
 }
 
 .token.namespace {
@@ -87,7 +87,7 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #c800b4;
+  color: var(--pink-1);
 }
 
 .token.selector,
@@ -96,7 +96,7 @@ pre[class*='language-'] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #0b7e55;
+  color: var(--green-1);
 }
 
 .token.operator,
@@ -104,25 +104,25 @@ pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #9d6b0c;
-  background: #f0eef8;
+  color: var(--yellow-1);
+  background: var(--blue-2);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #c800b4;
+  color: var(--pink-1);
 }
 
 .token.function,
 .token.class-name {
-  color: #000aff;
+  color: var(--blue-1);
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #c800b4;
+  color: var(--pink-1);
 }
 
 .token.important,
@@ -137,6 +137,6 @@ pre[class*='language-'] {
   cursor: help;
 }
 
-#general {
-  color: #000aff !important;
+.general {
+  color: var(--blue-1) !important;
 }
