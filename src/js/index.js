@@ -15,6 +15,7 @@ anime({
   delay: anime.stagger(10, { start: 250 }),
   endDelay: 500,
   easing: 'cubicBezier(.71,-0.77,.43,1.67)',
+  complete: (anime.running.length = 0),
 });
 
 // copies npm text to clipboard
@@ -29,11 +30,12 @@ let navColor = 'var(--blue-2)'; // determines navigation color shift end result
 let navIsIntersecting = false; // stops nav from changing colors if not intersecting
 
 // colorizer for features section
-function colorSelector(color, color2) {
+function colorizer(color, color2) {
   let colorSplash = document.querySelectorAll('.color-splash');
   let colorSplashLiner = document.querySelectorAll('.color-splash-liner');
   let colorSplashBorder = document.querySelector('.color-splash-border');
   let colorSplashBackground = document.querySelector('.features');
+  // get all entities that need to be colorized
   for (let i = 0; i < colorSplash.length; i++) {
     colorSplash[i].style.color = color;
     colorSplash[i].style.stroke = color;
@@ -45,6 +47,42 @@ function colorSelector(color, color2) {
   colorSplashBackground.style.background = color2;
   navColor = color2;
 }
+
+// features animations
+
+splt({
+  target: '.demo',
+  reveal: true,
+});
+
+let animation;
+let exampleAnimation = (x) => {
+  if (x == 0) {
+    animation = anime({
+      targets: '.demo .char',
+      translateY: [0, -30],
+      duration: 500,
+      loop: true,
+      direction: 'alternate',
+      delay: anime.stagger(40, { start: 500 }),
+      easing: 'cubicBezier(.64,-0.38,.43,1.54)',
+    });
+  }
+  if (x == 1) {
+    animation = anime({
+      targets: '.demo .reveal',
+      translateY: [0, -80],
+      duration: 600,
+      loop: true,
+      direction: 'alternate',
+      delay: anime.stagger(20, { start: 500 }),
+      easing: 'cubicBezier(.64,-0.38,.43,1.54)',
+    });
+  }
+};
+exampleAnimation(0);
+
+//
 
 // click functions for features section
 let featuresCard = document.querySelectorAll('.features-card');
@@ -59,15 +97,22 @@ for (let i = 0; i < featuresCard.length; i++) {
       liner[e].classList.remove('liner-add');
     }
 
+    if (anime.running.length > 0) {
+      animation.restart();
+    }
+    anime.running.length = 0;
+
     // specific color selections
     if ([i] == 0) {
-      colorSelector('var(--blue-1)', 'var(--blue-2)');
+      colorizer('var(--blue-1)', 'var(--blue-2)');
+      exampleAnimation(0);
     } else if ([i] == 1) {
-      colorSelector('var(--pink-1)', 'var(--pink-2)');
+      colorizer('var(--pink-1)', 'var(--pink-2)');
+      exampleAnimation(1);
     } else if ([i] == 2) {
-      colorSelector('var(--yellow-1)', 'var(--yellow-2)');
+      colorizer('var(--yellow-1)', 'var(--yellow-2)');
     } else {
-      colorSelector('var(--green-1)', 'var(--green-2)');
+      colorizer('var(--green-1)', 'var(--green-2)');
     }
     // set new active modifiers
     featuresCard[i].classList.remove('opacity-50');
@@ -95,8 +140,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { rootMargin: '0px 0px 100px 0px' }
+  { rootMargin: '-10% 0px -90% 0px' }
 );
 
-observer.observe(document.querySelector('.testimonials'));
-//https://coolcssanimation.com/how-to-trigger-a-css-animation-on-scroll/
+observer.observe(document.querySelector('.features'));
