@@ -8,21 +8,88 @@ splt({
   reveal: true,
 });
 
-anime({
+let heroTextAnimation = anime({
   targets: '.splt .reveal',
   translateY: [72, 0],
-  duration: 1000,
-  delay: anime.stagger(10, { start: 250 }),
-  endDelay: 500,
-  easing: 'cubicBezier(.71,-0.77,.43,1.67)',
-  complete: (anime.running.length = 0),
+  duration: 700,
+  delay: anime.stagger(15, { start: 250 }),
+  easing: 'cubicBezier(.6,-1.5,.1,1.9)',
 });
+
+let npmAnimation = anime({
+  targets: '#npm-container',
+  translateY: [30, 0],
+  rotate: [6, 0],
+  opacity: [0, 1],
+  duration: 800,
+  delay: 900,
+  easing: 'cubicBezier(.6,-1.5,.1,1.9)',
+});
+
+let valueCardAnimations = anime({
+  targets: '.value-card',
+  translateY: [200, 0],
+  duration: 900,
+  delay: anime.stagger(200, { start: 500 }),
+  easing: 'cubicBezier(.6,-1.5,.1,1.9)',
+  //complete: splt.revert,
+});
+
+// npm click animation card creation setup
+let count = 0; // helps decide which color to use
+let copiedMsgCreate = () => {
+  let copiedMessage = document.createElement('div');
+  copiedMessage.classList.add('copied-message');
+  if (count == 1) {
+    copiedMessage.classList.add('cmBlue');
+  } else if (count == 2) {
+    copiedMessage.classList.add('cmPink');
+  } else if (count == 3) {
+    copiedMessage.classList.add('cmYellow');
+  } else if (count == 4) {
+    copiedMessage.classList.add('cmGreen');
+  }
+  copiedMessage.setAttribute('id', ['clip'] + count);
+  copiedMessage.innerHTML = 'Copied to clipboard!';
+  copyNPM.appendChild(copiedMessage);
+
+  copiedMsgCreate.destroy = () => {
+    copiedMessage.remove();
+  };
+};
 
 // copies npm text to clipboard
 const copyNPM = document.getElementById('copy-npm');
 copyNPM.addEventListener('click', () => {
+  // after click animation setup
   navigator.clipboard.writeText('npm i spltjs').then(() => {
-    console.log('hey logan we need something here');
+    count = count + 1;
+    if (count == 5) {
+      count = 1;
+    }
+    anime({
+      begin: copiedMsgCreate(),
+      targets: '#clip' + count,
+      translateY: {
+        value: [
+          -20,
+          () => {
+            return anime.random(-70, -120);
+          },
+        ],
+        duration: 1200,
+      },
+      rotate: () => {
+        return anime.random(15, -15);
+      },
+      opacity: [
+        { value: [0, 1], duration: 400 },
+        { value: [1, 0], duration: 500 },
+      ],
+      duration: 500,
+      easing: 'cubicBezier(.21,.9,.52,.95)',
+      complete: copiedMsgCreate.destroy,
+    });
   });
 });
 
@@ -30,7 +97,7 @@ let navColor = 'var(--blue-2)'; // determines navigation color shift end result
 let navIsIntersecting = false; // stops nav from changing colors if not intersecting
 
 // colorizer for features section
-function colorizer(color, color2) {
+let colorizer = (color, color2) => {
   let colorSplash = document.querySelectorAll('.color-splash');
   let colorSplashLiner = document.querySelectorAll('.color-splash-liner');
   let colorSplashBorder = document.querySelector('.color-splash-border');
@@ -46,14 +113,15 @@ function colorizer(color, color2) {
   colorSplashBorder.style.border = '1px ' + color + ' solid';
   colorSplashBackground.style.background = color2;
   navColor = color2;
-}
+};
 
-// features animations
+// features section animations
 
 splt({
   target: '.demo',
   reveal: true,
 });
+let noSPLT = false; // primer for revert in animation 3
 
 let animation;
 let exampleAnimation = (x) => {
@@ -61,22 +129,69 @@ let exampleAnimation = (x) => {
     animation = anime({
       targets: '.demo .char',
       translateY: [0, -30],
-      duration: 500,
+      duration: 300,
       loop: true,
       direction: 'alternate',
-      delay: anime.stagger(40, { start: 500 }),
+      delay: anime.stagger(30, { start: 500 }),
       easing: 'cubicBezier(.64,-0.38,.43,1.54)',
     });
-  }
-  if (x == 1) {
+    noSPLT = false;
+  } else if (x == 1) {
     animation = anime({
       targets: '.demo .reveal',
-      translateY: [0, -80],
+      translateY: [80, 0],
       duration: 600,
       loop: true,
       direction: 'alternate',
       delay: anime.stagger(20, { start: 500 }),
+      endDelay: 300,
       easing: 'cubicBezier(.64,-0.38,.43,1.54)',
+    });
+    noSPLT = false;
+  } else if (x == 2) {
+    animation = anime({
+      targets: '.demo .reveal',
+      translateY: [80, 0],
+      duration: 600,
+      delay: anime.stagger(10, { start: 500 }),
+      easing: 'cubicBezier(.64,-0.38,.43,1.54)',
+      complete: () => {
+        anime({
+          targets: '.demo #c1, .demo #c2, .demo #c3',
+          keyframes: [{ translateY: -80 }, { scale: 0.8 }, { rotate: 35 }, { rotate: 0 }, { scale: 1 }, { translateY: 0 }],
+          duration: 3800,
+          endDelay: 100,
+          delay: anime.stagger(80, { start: 500 }),
+          easing: 'cubicBezier(1,-1.6,.35,2.06)',
+          complete: () => {
+            anime({
+              targets: '.demo .reveal',
+              translateY: [0, -80],
+              duration: 600,
+              delay: anime.stagger(10, { start: 500 }),
+              easing: 'cubicBezier(.64,-0.38,.43,1.54)',
+              complete: animation.restart,
+            });
+          },
+        });
+      },
+    });
+    noSPLT = false;
+  } else if (x == 3) {
+    animation = anime({
+      targets: '.demo .char',
+      translateY: () => {
+        return anime.random(-30, 30);
+      },
+      duration: 500,
+      direction: 'alternate',
+      loop: 1,
+      delay: anime.stagger(50, { from: 'center', start: 500 }),
+      easing: 'cubicBezier(.71,-5,.43,5)',
+      complete: () => {
+        splt.revert();
+        noSPLT = true; // primer triggered, next click will resplit
+      },
     });
   }
 };
@@ -84,19 +199,34 @@ exampleAnimation(0);
 
 //
 
+// reset reveal position
+let revealReset = () => {
+  let reveals = document.querySelectorAll('.reveal');
+  for (let i = 0; i < reveals.length; i++) {
+    reveals[i].style.transform = 'translateY(0px)';
+  }
+};
+
 // click functions for features section
 let featuresCard = document.querySelectorAll('.features-card');
 for (let i = 0; i < featuresCard.length; i++) {
   let liner = document.querySelectorAll('.liner');
-  //featuresCard[i].style.opacity = '50%';
 
   featuresCard[i].addEventListener('click', () => {
+    // resplit characters
+    if (noSPLT == true) {
+      splt({
+        target: '.demo',
+        reveal: true,
+      });
+    }
     // reset active modifiers
     for (let e = 0; e < featuresCard.length; e++) {
       featuresCard[e].classList.add('opacity-50');
       liner[e].classList.remove('liner-add');
     }
 
+    // resets animations to 0 to cleanly play them with each click
     if (anime.running.length > 0) {
       animation.restart();
     }
@@ -105,14 +235,18 @@ for (let i = 0; i < featuresCard.length; i++) {
     // specific color selections
     if ([i] == 0) {
       colorizer('var(--blue-1)', 'var(--blue-2)');
+      revealReset();
       exampleAnimation(0);
     } else if ([i] == 1) {
       colorizer('var(--pink-1)', 'var(--pink-2)');
       exampleAnimation(1);
     } else if ([i] == 2) {
       colorizer('var(--yellow-1)', 'var(--yellow-2)');
-    } else {
+      exampleAnimation(2);
+    } else if ([i] == 3) {
       colorizer('var(--green-1)', 'var(--green-2)');
+      revealReset();
+      exampleAnimation(3);
     }
     // set new active modifiers
     featuresCard[i].classList.remove('opacity-50');
@@ -144,3 +278,32 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(document.querySelector('.features'));
+
+let magnets = document.querySelectorAll('.testimonial-card');
+let strength = 50;
+
+magnets.forEach((magnet) => {
+  magnet.addEventListener('mousemove', moveMagnet);
+  magnet.addEventListener('mouseout', (event) => {
+    anime({
+      targets: event.currentTarget,
+      duration: 1500,
+      translateX: 0,
+      translateY: 0,
+    });
+  });
+});
+
+function moveMagnet(event) {
+  let magnetButton = event.currentTarget;
+  let bounding = magnetButton.getBoundingClientRect();
+
+  //console.log(magnetButton, bounding)
+
+  anime({
+    targets: magnetButton,
+    duration: 1000,
+    translateX: ((event.clientX - bounding.left) / magnetButton.offsetWidth - 0.5) * strength,
+    translateY: ((event.clientY - bounding.top) / magnetButton.offsetHeight - 0.5) * strength,
+  });
+}

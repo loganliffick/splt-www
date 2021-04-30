@@ -18,7 +18,9 @@
 }
 
 #copy-npm {
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  user-select: none;
 }
 
 #copy-npm:hover {
@@ -54,6 +56,38 @@
 .copy-icon.left {
   left: 0px;
   bottom: 0px;
+}
+
+.copied-message {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  position: absolute;
+  top: 10px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+.cmBlue {
+  background: var(--blue-1);
+  color: var(--blue-2);
+}
+
+.cmPink {
+  background: var(--pink-1);
+  color: var(--pink-2);
+}
+
+.cmYellow {
+  background: var(--yellow-1);
+  color: var(--yellow-2);
+}
+
+.cmGreen {
+  background: var(--green-1);
+  color: var(--green-2);
 }
 
 /* values section */
@@ -208,6 +242,12 @@
 
 .testimonial-card {
   position: absolute;
+  margin: -100px;
+  padding: 100px;
+  display: inline-block;
+  border-radius: 50%;
+  will-change: transform;
+  /* border: 1px solid #000; */
 }
 
 #testimonial-1 {
@@ -253,11 +293,11 @@
 
 .msg-caret-left {
   position: absolute;
-  left: 24px;
+  left: 136px;
 }
 
 .msg-caret-right {
   position: absolute;
-  right: 24px;
+  right: 136px;
   transform: scaleX(-1);
 }

@@ -2,8 +2,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: var(--black);
   background: none;
-  font-family: 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
+  font-family: 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 16px;
   text-align: left;
   white-space: pre;
@@ -62,7 +61,7 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'] {
   padding: 0.1em;
   border-radius: 8px;
-  white-space: normal;
+  /* white-space: normal; */
 }
 
 .token.comment,
