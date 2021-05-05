@@ -95,8 +95,7 @@
 .values {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
   max-width: var(--width-2);
   padding-left: var(--padding);
   padding-right: var(--padding);
@@ -105,6 +104,7 @@
 
 .value-card {
   padding: 24px 24px 32px 24px;
+  margin-bottom: 2rem;
   border-radius: 8px;
   width: 352px;
 }
@@ -118,6 +118,8 @@
 
 .value-card.b {
   background: var(--pink-2);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .value-card.b h2,
 .value-card.b p {
@@ -236,8 +238,16 @@
   margin-left: auto;
   max-width: 400px;
   height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   border-radius: 100%;
-  background: papayawhip;
+  background: #cfa77a;
+}
+
+.ollie {
+  height: 100%;
 }
 
 .testimonial-card {
@@ -300,4 +310,138 @@
   position: absolute;
   right: 136px;
   transform: scaleX(-1);
+}
+
+.support-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  max-width: max-content;
+  min-width: 300px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  padding: 16px 24px 16px 24px;
+  border-radius: 8px;
+  background: var(--black);
+  z-index: 3;
+}
+
+.support-card p {
+  color: var(--white);
+}
+
+.x-line-1 {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  transform: rotate(45deg);
+  background: var(--white);
+}
+
+.x-line-2 {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  transform: rotate(-45deg);
+  background: var(--white);
+}
+
+@media only screen and (max-width: 1072px) {
+  .features-content-main {
+    padding-top: var(--section-break-1);
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  .features-list {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .features-card {
+    padding: 24px 48px 32px 0px;
+    width: 50%;
+  }
+
+  .features-demo {
+    max-width: 100%;
+  }
+
+  .features-content-main {
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .values {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .value-card {
+    width: 100%;
+  }
+  .value-card.b {
+    background: var(--pink-2);
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .features-card {
+    padding: 24px 48px 32px 0px;
+    width: 100%;
+  }
+
+  .testimonials {
+    display: block;
+  }
+
+  .ollie-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .testimonials-content-main {
+    width: auto;
+  }
+
+  .testimonials-visual-content {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .quote {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .testimonial-card {
+    position: static;
+    width: 100%;
+    margin: 48px 0 0 0;
+    padding: 0;
+    display: block;
+  }
+
+  .msg-caret-left {
+    position: absolute;
+    left: 24px;
+  }
+
+  .msg-caret-right {
+    position: absolute;
+    left: 24px;
+    transform: scaleX(1);
+  }
 }

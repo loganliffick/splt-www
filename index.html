@@ -14,13 +14,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css" />
   </head>
   <body>
+    <div class="support-card">
+      <p class="margin-right-1">
+        Share the love. Support splt's creator
+        <a href="https://buymeacoffee.com/loganliffick" target="_blank" class="secondary font-weight-medium">here</a>
+      </p>
+      <div class="hamburger x">
+        <div class="x-line-1"></div>
+        <div class="x-line-2"></div>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <div>
+        <a class="margin-right-1h primary" href="#features"><h2 class="font-color-black mobile-item menu">Features</h2></a>
+        <a class="margin-right-1h primary" href="#testimonials"><h2 class="font-color-black mobile-item menu">Testimonials</h2></a>
+        <a class="margin-right-1h primary" href="https://buymeacoffee.com/loganliffick" target="_blank"><h2 class="font-color-black mobile-item menu">Support</h2></a>
+        <a class="margin-right-1h primary" href="documentation.html"><h2 class="font-color-black mobile-item menu">Documentation</h2></a>
+        <a class="button margin-top-2 white-outline mobile-item menu" href="https://github.com/Logan-Liffick/splt" target="_blank">
+          <p class="margin-right-0h font-color-black">View on Github</p>
+          <div class="invisibutton-container">
+            <div class="invisibutton">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="white-fill" d="M2 8L13 8" stroke="black" stroke-linecap="round" />
+                <path class="white-fill" d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="white-fill" d="M2 8L13 8" stroke="black" stroke-linecap="round" />
+                <path class="white-fill" d="M9 3L14 8L9 13" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </a>
+        <p class="menu-footer">
+          © 2021-present |
+          <a href="https://loganliffick.com" target="_blank" class="secondary font-weight-medium font-color-black">Logan Liffick</a>
+        </p>
+      </div>
+    </div>
     <header>
       <section class="nav">
-        <a href="#" class="flex-container">
-          <h2 class="margin-right-0h">splt</h2>
-          <h2 class="font-weight-regular opacity-50">1.1.0</h2>
+        <a href="#" class="flex-container mobile-item" id="logo">
+          <h2 class="margin-right-0h font-color-black">splt</h2>
+          <h2 class="font-weight-regular font-color-black opacity-50 version">1.1.0</h2>
         </a>
-        <div class="flex-container">
+        <div class="flex-container" id="large-primary">
           <a class="margin-right-1h primary" href="#features"><p class="font-color-black">Features</p></a>
           <a class="margin-right-1h primary" href="#testimonials"><p class="font-color-black">Testimonials</p></a>
           <a class="margin-right-1h primary" href="https://buymeacoffee.com/loganliffick" target="_blank"><p class="font-color-black">Support</p></a>
@@ -40,6 +77,12 @@
               </div>
             </div>
           </a>
+        </div>
+        <div class="hamburger-wrapper">
+          <div class="hamburger">
+            <div class="ham-line-1"></div>
+            <div class="ham-line-2"></div>
+          </div>
         </div>
       </section>
     </header>
@@ -81,14 +124,14 @@
               <div class="liner color-splash-liner"></div>
               <h2 class="color-splash">Reveal text</h2>
             </div>
-            <p class="margin-top-1 color-splash">Like a GD web wizard, those fancy transitions are at your finger-tips.</p>
+            <p class="margin-top-1 color-splash">Like a GD web wizard, those fancy transitions lie at your finger-tips.</p>
           </div>
           <div class="features-card opacity-50">
             <div class="flex-container alt">
               <div class="liner color-splash-liner"></div>
               <h2 class="color-splash">Selective targeting</h2>
             </div>
-            <p class="margin-top-1 color-splash">So... much... control! Grab what you need when you need it.</p>
+            <p class="margin-top-1 color-splash">I'd like to buy a vowel! How about a whole word? Maybe two?</p>
           </div>
           <div class="features-card opacity-50">
             <div class="flex-container alt">
@@ -129,7 +172,9 @@
           <h2 class="font-weight-regular opacity-75 margin-top-1">Just ask the official spokespup, Ollie, what he’s heard people saying about splt lately!</h2>
         </div>
         <div class="testimonials-visual-content margin-top-5">
-          <div class="ollie-container"></div>
+          <div class="ollie-container">
+            <img class="ollie" src="./public/Ollie.webp" alt="A portrait of our golden retriever, Ollie" />
+          </div>
           <div class="testimonial-card" id="testimonial-1">
             <div class="flex-container quote quote-blue">
               <p class="margin-right-1">GTFO, splt is the shit!</p>

@@ -16,6 +16,27 @@ let heroTextAnimation = anime({
   easing: 'cubicBezier(.6,-1.5,.1,1.9)',
 });
 
+// logo animation and trigger + throttling
+splt({
+  target: '.version',
+  reveal: true,
+});
+
+const logo = document.getElementById('logo');
+logo.addEventListener('mouseenter', () => {
+  if (anime.running.length > 1) {
+  } else {
+    let versionAnimation = anime({
+      targets: '.version .reveal',
+      translateY: [
+        { value: [0, -32], duration: 400, delay: anime.stagger(15, { start: 150 }) },
+        { value: [32, 0], duration: 600, delay: anime.stagger(15) },
+      ],
+      easing: 'cubicBezier(.6,-1.5,.1,1.5)',
+    });
+  }
+});
+
 let npmAnimation = anime({
   targets: '#npm-container',
   translateY: [30, 0],
@@ -28,11 +49,10 @@ let npmAnimation = anime({
 
 let valueCardAnimations = anime({
   targets: '.value-card',
-  translateY: [200, 0],
+  translateY: [120, 0],
   duration: 900,
   delay: anime.stagger(200, { start: 500 }),
   easing: 'cubicBezier(.6,-1.5,.1,1.9)',
-  //complete: splt.revert,
 });
 
 // npm click animation card creation setup
@@ -209,6 +229,7 @@ let revealReset = () => {
 
 // click functions for features section
 let featuresCard = document.querySelectorAll('.features-card');
+let navBackground = document.querySelector('header');
 for (let i = 0; i < featuresCard.length; i++) {
   let liner = document.querySelectorAll('.liner');
 
@@ -253,7 +274,7 @@ for (let i = 0; i < featuresCard.length; i++) {
     liner[i].classList.add('liner-add');
     // determine nav position to decide if it needs a background color
     if (navIsIntersecting == true) {
-      document.querySelector('header').style.background = navColor;
+      navBackground.style.background = navColor;
     }
   });
 }
@@ -279,6 +300,7 @@ const observer = new IntersectionObserver(
 
 observer.observe(document.querySelector('.features'));
 
+// testimonial magnetic hover
 let magnets = document.querySelectorAll('.testimonial-card');
 let strength = 50;
 
@@ -307,3 +329,108 @@ function moveMagnet(event) {
     translateY: ((event.clientY - bounding.top) / magnetButton.offsetHeight - 0.5) * strength,
   });
 }
+
+// hamburger menu
+let hamburgerClicked = false;
+const hamburgerWrapper = document.querySelector('.hamburger-wrapper');
+const topLine = document.querySelector('.ham-line-1');
+const bottomLine = document.querySelector('.ham-line-2');
+const fontColorBlack = document.querySelectorAll('.font-color-black');
+const mobileMenu = document.querySelector('.mobile-menu');
+const body = document.querySelector('body');
+
+let mobileMenuAnimation = () => {
+  anime({
+    targets: '.mobile-item.menu',
+    translateY: [32, 0],
+    opacity: [0, 1],
+    duration: 700,
+    delay: anime.stagger(50),
+    easing: 'cubicBezier(.6,-1.5,.1,1.9)',
+  });
+};
+
+let hamburgerClickTrue = () => {
+  topLine.style.top = '50%';
+  topLine.style.transform = 'rotate(45deg)';
+  topLine.style.background = 'var(--white)';
+  bottomLine.style.top = '50%';
+  bottomLine.style.transform = 'rotate(-45deg)';
+  bottomLine.style.background = 'var(--white)';
+  for (let i = 0; i < fontColorBlack.length; i++) {
+    fontColorBlack[i].style.color = 'var(--white)';
+  }
+  navBackground.style.background = 'var(--black)';
+  body.style.height = '100vh';
+  body.style.overflow = 'hidden';
+  mobileMenu.style.display = 'block';
+  setTimeout(() => {
+    mobileMenu.style.opacity = '1';
+  }, 0);
+  logo.style.color = 'var(--white)';
+  mobileMenuAnimation();
+  hamburgerClicked = true;
+};
+
+let hamburgerClickFalse = () => {
+  topLine.style.top = '35%';
+  topLine.style.transform = 'rotate(0deg)';
+  topLine.style.background = 'var(--black)';
+  bottomLine.style.top = '65%';
+  bottomLine.style.transform = 'rotate(0deg)';
+  bottomLine.style.background = 'var(--black)';
+  for (let i = 0; i < fontColorBlack.length; i++) {
+    fontColorBlack[i].style.color = 'var(--black)';
+  }
+  if (navIsIntersecting == true) {
+    navBackground.style.background = navColor;
+  } else {
+    navBackground.style.background = 'var(--white)';
+  }
+  body.style.height = 'auto';
+  body.style.overflow = 'visible';
+  mobileMenu.style.opacity = '0';
+  setTimeout(() => {
+    mobileMenu.style.display = 'none';
+  }, 300);
+  hamburgerClicked = false;
+};
+
+hamburgerWrapper.addEventListener('click', () => {
+  if (hamburgerClicked == false) {
+    hamburgerClickTrue();
+  } else {
+    hamburgerClickFalse();
+  }
+});
+
+let mobileMenuItems = document.querySelectorAll('.mobile-item');
+
+for (let i = 0; i < mobileMenuItems.length; i++) {
+  mobileMenuItems[i].addEventListener('click', () => {
+    hamburgerClickFalse();
+  });
+}
+
+// added to kick the user out of hamburger mode should the browser be resized
+window.addEventListener('resize', () => {
+  hamburgerClickFalse();
+});
+
+// support button functionality
+const closeBtn = document.querySelector('.x');
+const supportCard = document.querySelector('.support-card');
+closeBtn.addEventListener('click', () => {
+  supportCard.style.display = 'none';
+});
+
+setTimeout(() => {
+  anime({
+    targets: '.support-card',
+    translateY: [32, 0],
+    translateX: ['-50%', '-50%'],
+    opacity: [0, 1],
+    duration: 900,
+    easing: 'cubicBezier(.6,-1.5,.1,1.9)',
+  });
+}, 10000);
