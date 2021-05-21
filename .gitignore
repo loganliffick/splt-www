@@ -15,5 +15,5 @@ src/archive
 build
 
 # snowpack
-snowpack.config.js
+# snowpack.config.js
 .snowpack/
