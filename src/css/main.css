@@ -539,7 +539,7 @@ a.primary:hover::before {
 }
 
 .copied-arrow {
-  background-image: url('../../public/caret.svg');
+  background-image: url('/public/caret.svg');
   width: 32px;
   height: 12px;
   margin-left: auto;
