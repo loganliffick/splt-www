@@ -1,7 +1,3 @@
-// import anime from 'animejs';
-// import splt from 'spltjs';
-// import Prism from 'prismjs';
-
 Prism.highlightAll();
 
 splt({
@@ -297,10 +293,8 @@ let brgrIconClickTrue = () => {
 let brgrIconClickFalse = () => {
   topLine.style.top = '35%';
   topLine.style.transform = 'rotate(0deg)';
-  topLine.style.background = 'var(--black)';
   bottomLine.style.top = '65%';
   bottomLine.style.transform = 'rotate(0deg)';
-  bottomLine.style.background = 'var(--black)';
   if (navIsIntersecting == true) {
     navBackground.style.background = 'var(--primary-3)';
   } else {

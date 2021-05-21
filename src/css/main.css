@@ -347,6 +347,7 @@ a.primary:hover::before {
   height: 1px;
   background: var(--black);
   transition: inherit;
+  will-change: transform, top;
 }
 
 .brgr-icon-line-2 {
@@ -356,6 +357,7 @@ a.primary:hover::before {
   height: 1px;
   background: var(--black);
   transition: inherit;
+  will-change: transform, top;
 }
 
 .menu-s {
