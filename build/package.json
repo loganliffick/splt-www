@@ -2,7 +2,7 @@
   "name": "splt-www",
   "version": "1.0.0",
   "description": "splt.js documentation site",
-  "main": "main.js",
+  "main": "index.html",
   "scripts": {
     "dev": "snowpack dev",
     "build": "snowpack build"
