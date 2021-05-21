@@ -1,19 +1,6 @@
-# dependencies
-.cache
-dist
-node_modules
-
-# misc
-.DS_Store
-src/archive
-
 # prettier
 .prettierignore
 .prettierrc
 
-# production
-build
-
-# snowpack
-# snowpack.config.js
-.snowpack/
+# vscode
+.vscode
