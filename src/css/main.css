@@ -539,11 +539,13 @@ a.primary:hover::before {
 }
 
 .copied-arrow {
-  background-image: url('/public/caret.svg');
-  width: 32px;
-  height: 12px;
-  margin-left: auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 16px 0 16px;
+  border-color: var(--black) transparent transparent transparent;
   margin-right: auto;
+  margin-left: auto;
 }
 
 /* values section */
