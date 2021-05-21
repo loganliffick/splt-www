@@ -479,10 +479,6 @@ a.primary:hover::before {
   box-shadow: var(--neu-shadow-1-hover);
 }
 
-#copy-npm:hover .npm-icon.left {
-  transform: translate(2px, -2px);
-}
-
 .npm-icon-container {
   width: 16px;
   height: 16px;
@@ -493,47 +489,59 @@ a.primary:hover::before {
 
 .npm-icon {
   position: absolute;
-  height: 11px;
-  width: 11px;
-  border: 1px solid var(--primary-1);
-  background: var(--gray-4);
-  border-radius: 3px;
-  transition: inherit;
+  opacity: 1;
+  width: 56px;
+  height: 56px;
+  top: -125%;
+  left: -125%;
+  background-image: url('../../public/check-animation.svg');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 3700%;
 }
 
-.npm-icon.right {
-  right: 0px;
-  top: 0px;
+#copy-npm:hover .npm-icon {
+  background-position: right;
 }
 
-.npm-icon.left {
-  left: 0px;
-  bottom: 0px;
+.is_animating {
+  animation: heart-burst 1.2s steps(36) 1;
+}
+
+@keyframes heart-burst {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
+}
+
+.message-container {
+  position: absolute;
+  top: -65px;
+  opacity: 0;
+  user-select: none;
+  transition: opacity 0.2s ease;
 }
 
 .copied-message {
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  position: absolute;
-  top: 20px;
+  font-size: 16px;
+  line-height: 16px;
   padding: 16px;
   border-radius: 8px;
-  user-select: none;
   color: var(--white);
+  background: var(--black);
 }
 
-.cm1 {
-  background: var(--accent-1);
-}
-
-.cm2 {
-  background: var(--accent-2);
-}
-
-.cm3 {
-  background: var(--primary-1);
+.copied-arrow {
+  background-image: url('../../public/caret.svg');
+  width: 32px;
+  height: 12px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* values section */

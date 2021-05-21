@@ -65,65 +65,48 @@ logo.addEventListener('mouseenter', () => {
 });
 
 // npm click animation card creation setup
-let count = 0; // helps decide which color to use
 let copiedMsgCreate = () => {
+  let messageContainer = document.createElement('div');
+  messageContainer.classList.add('message-container');
   let copiedMessage = document.createElement('div');
   copiedMessage.classList.add('copied-message');
-  if (count == 1) {
-    copiedMessage.classList.add('cm1');
-  } else if (count == 2) {
-    copiedMessage.classList.add('cm2');
-  } else if (count == 3) {
-    copiedMessage.classList.add('cm3');
-  }
-  copiedMessage.setAttribute('id', ['clip'] + count);
   copiedMessage.innerHTML = 'Copied to clipboard!';
-  copyNPM.appendChild(copiedMessage);
-
-  copiedMsgCreate.destroy = () => {
-    copiedMessage.remove();
-  };
+  messageContainer.appendChild(copiedMessage);
+  let copiedArrow = document.createElement('div');
+  copiedArrow.classList.add('copied-arrow');
+  messageContainer.appendChild(copiedArrow);
+  copyNPM.appendChild(messageContainer);
+  setTimeout(() => {
+    messageContainer.style.opacity = 1;
+  }, 1);
+  setTimeout(() => {
+    messageContainer.style.opacity = 0;
+    setTimeout(() => {
+      messageContainer.remove();
+    }, 200);
+  }, 1200);
 };
 
 // copies npm text to clipboard
 const copyNPM = document.getElementById('copy-npm');
-copyNPM.addEventListener('click', () => {
-  // after click animation setup
-  navigator.clipboard.writeText('npm i spltjs').then(() => {
-    count = count + 1;
-    if (count == 4) {
-      count = 1;
-    }
-    anime({
-      begin: copiedMsgCreate(),
-      targets: '#clip' + count,
-      translateY: {
-        value: [
-          -20,
-          () => {
-            return anime.random(-70, -120);
-          },
-        ],
-        duration: 1200,
-      },
-      rotate: () => {
-        return anime.random(15, -15);
-      },
-      opacity: [
-        { value: [0, 1], duration: 400 },
-        { value: [1, 0], duration: 500 },
-      ],
-      duration: 500,
-      easing: 'cubicBezier(.21,.9,.52,.95)',
-      complete: copiedMsgCreate.destroy,
-    });
-  });
+const npmIcon = document.querySelector('.npm-icon');
+
+// click function for NPM animation
+copyNPM.addEventListener('click', (e) => {
+  e.preventDefault;
+  navigator.clipboard.writeText('npm i spltjs');
+  copiedMsgCreate();
+
+  npmIcon.classList.remove('is_animating');
+
+  void npmIcon.offsetWidth;
+  npmIcon.classList.add('is_animating');
 });
+
+// features section animations
 
 let navColor = 'var(--primary-3)'; // determines navigation color shift end result
 let navIsIntersecting = false; // stops nav from changing colors if not intersecting
-
-// features section animations
 
 splt({
   target: '.demo',
