@@ -12,7 +12,7 @@ src/archive
 .prettierrc
 
 # production
-build
+# build
 
 # snowpack
 snowpack.config.js
