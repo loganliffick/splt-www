@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Cascadia code';
+  src: url('/public/CascadiaCode-Regular.otf') format('otf');
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   color: var(--primary-0);

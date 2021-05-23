@@ -197,6 +197,7 @@ p {
   margin-bottom: var(--spacing-2);
   transition: all 0.2s ease;
   opacity: 0.5;
+  z-index: 5;
 }
 
 .feature:hover {
