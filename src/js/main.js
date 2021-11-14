@@ -350,7 +350,7 @@ setTimeout(() => {
     duration: 900,
     easing: 'cubicBezier(.6,-1.5,.1,1.9)',
   });
-}, 60000);
+}, 10000);
 
 closeBtn.addEventListener('click', () => {
   let supportOut = anime({
